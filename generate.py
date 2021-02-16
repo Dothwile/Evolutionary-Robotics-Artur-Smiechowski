@@ -3,22 +3,23 @@
 import pyrosim.pyrosim as pyrosim
 import pybullet
 
-pyrosim.Start_SDF("boxs.sdf")
-
 length = 1
 width = 1
 height = 1
 x = 0
 y = 0
-z = 0.5
+z = 0
 
-for x1 in range(6):
-    for y1 in range(6):
-        for n in range(10):
-            pyrosim.Send_Cube(name="Box",pos=[x+x1,y+y1,z+n],size=[length*0.9**n,width*0.9**n,height*0.9**n])
+def Create_World():
+    pyrosim.Start_SDF("boxs.sdf")
+    pyrosim.Send_Cube(name="Box",pos=[x,y,z],size=[length,width,height])
+    pyrosim.End()
+
+def Create_Robot():
+    pyrosim.Start_URDF("body.urdf")
+    pyrosim.Send_Cube(name="Torso",pos=[x,y,z],size=[length,width,height])
+    pyrosim.End()
 
 
-#pyrosim.Send_Cube(name="Box",pos=[x,y,z],size=[length,width,height])
-#pyrosim.Send_Cube(name="Box2",pos=[0.25,y,1.5],size=[length,width,height])
-
-pyrosim.End()
+Create_World()
+Create_Robot()
