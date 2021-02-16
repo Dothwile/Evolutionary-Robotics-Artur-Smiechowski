@@ -10,9 +10,10 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 #Set World Parameters
 p.setGravity(0,0,-9.8)
 planeId = p.loadURDF("plane.urdf")
+robotId = p.loadURDF("body.urdf")
 
 #Load World
-p.loadSDF("boxs.sdf")
+p.loadSDF("box.sdf")
 
 for step in range(1000):
     #Loop step times
