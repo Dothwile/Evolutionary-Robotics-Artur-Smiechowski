@@ -12,7 +12,7 @@ p.setGravity(0,0,-9.8)
 planeId = p.loadURDF("plane.urdf")
 
 #Load World
-p.loadSDF("box.sdf")
+p.loadSDF("boxs.sdf")
 
 for step in range(1000):
     #Loop step times
