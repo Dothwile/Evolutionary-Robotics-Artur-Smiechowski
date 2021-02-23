@@ -19,16 +19,22 @@ p.loadSDF("box.sdf")
 
 pyrosim.Prepare_To_Simulate("body.urdf")
 
-backLegSensorValues = np.zeros(1000)
+backLegSensorValues = np.zeros(100)
+frontLegSensorValues = np.zeros(100)
 print(backLegSensorValues)
+print(frontLegSensorValues)
 
-for step in range(1000):
+for step in range(100):
     #Loop step times
     p.stepSimulation()
     backLegSensorValues[step] = pyrosim.Get_Touch_Sensor_Value_For_Link("Back_Leg")
+    frontLegSensorValues[step] = pyrosim.Get_Touch_Sensor_Value_For_Link("Front_Leg")
     time.sleep(1/60)
 
 p.disconnect() #Disconnect from Physics client
 
-np.save('data\SensorDat1',backLegSensorValues)
+# \ in filepath names trip formatting issues, thus the leading 'r' to declare literal
+np.save(r'data\SensorDat1',backLegSensorValues)
+np.save(r'data\frontLegSensorValues',frontLegSensorValues)
 print(backLegSensorValues)
+print(frontLegSensorValues)
