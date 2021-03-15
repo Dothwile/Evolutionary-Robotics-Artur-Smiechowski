@@ -1,5 +1,6 @@
 #simulate.py
 #Created by Artur Smiechowski 14/02/2021
+
 import pybullet as p
 import pybullet_data
 import time
@@ -7,22 +8,15 @@ import pyrosim.pyrosim as pyrosim
 import numpy as np
 import random
 import constants as c
+from simulation import SIMULATION
 
-physicsClient = p.connect(p.GUI) #Create Physics Client
-p.setAdditionalSearchPath(pybullet_data.getDataPath())
+'''
 
-#Set World Parameters
-p.setGravity(0,0,c.g)
-planeId = p.loadURDF("plane.urdf")
-robotId = p.loadURDF("body.urdf")
+
+
 
 f_targetAngles = c.f_amp*np.sin(c.f_freq*np.linspace(0,c.sim_length,c.sim_length) + c.f_phase)
-b_targetAngles = c.b_amp*np.sin(c.b_freq*np.linspace(0,c.sim_length,c.sim_length) + c.b_phase
-
-#Load World
-#p.loadSDF("box.sdf")
-
-pyrosim.Prepare_To_Simulate("body.urdf")
+b_targetAngles = c.b_amp*np.sin(c.b_freq*np.linspace(0,c.sim_length,c.sim_length) + c.b_phase)
 
 backLegSensorValues = np.zeros(c.sim_length)
 frontLegSensorValues = np.zeros(c.sim_length)
@@ -53,3 +47,5 @@ np.save(r'data\frontLegSensorValues',frontLegSensorValues)
 
 print(backLegSensorValues)
 print(frontLegSensorValues)
+'''
+simulation = SIMULATION()
