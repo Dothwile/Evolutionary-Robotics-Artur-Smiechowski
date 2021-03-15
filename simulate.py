@@ -48,4 +48,8 @@ np.save(r'data\frontLegSensorValues',frontLegSensorValues)
 print(backLegSensorValues)
 print(frontLegSensorValues)
 '''
+'''
+physicsClient = p.connect(p.GUI) #Create Physics Client
+p.setAdditionalSearchPath(pybullet_data.getDataPath())
+'''
 simulation = SIMULATION()

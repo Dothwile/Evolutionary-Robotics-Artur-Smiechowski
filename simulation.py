@@ -10,7 +10,7 @@ from robot import ROBOT
 
 class SIMULATION:
 
-    def __init___(self):
+    def __init__(self):
                 
         self.physicsClient = p.connect(p.GUI) #Create Physics Client
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -21,4 +21,6 @@ class SIMULATION:
         # Create a World object
         self.world = WORLD()
         # Create a Robot object
-        self.robot = ROBOT()        
+        self.robot = ROBOT()
+        
+        
