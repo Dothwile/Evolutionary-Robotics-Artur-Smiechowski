@@ -20,7 +20,7 @@ f_targetAngles = c.f_amp*np.sin(c.f_freq*np.linspace(0,c.sim_length,c.sim_length
 b_targetAngles = c.b_amp*np.sin(c.b_freq*np.linspace(0,c.sim_length,c.sim_length) + c.b_phase
 
 #Load World
-p.loadSDF("box.sdf")
+#p.loadSDF("box.sdf")
 
 pyrosim.Prepare_To_Simulate("body.urdf")
 
