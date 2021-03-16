@@ -43,3 +43,4 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 '''
 
 simulation = SIMULATION()
+simulation.Run()
