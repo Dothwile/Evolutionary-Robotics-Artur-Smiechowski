@@ -30,4 +30,6 @@ def Create_Robot():
 
 
 Create_World()
+print("Created world")
 Create_Robot()
+print("Created robot")
