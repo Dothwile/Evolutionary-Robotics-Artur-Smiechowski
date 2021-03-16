@@ -30,12 +30,14 @@ class SIMULATION:
             p.stepSimulation()
             
             self.robot.Sense(step)
+            self.robot.Think()
             self.robot.Act(step)
 
             time.sleep(1/60)
-            
+            '''
             self.robot.SaveSensorValues()
             self.robot.SaveMotorValues()
+            '''
             
     def __del__(self):
         p.disconnect()
