@@ -20,4 +20,4 @@ class MOTOR:
         pyrosim.Set_Motor_For_Joint(
         bodyIndex = robot,
         jointName = self.jointName,
-        controlMode = p.POSITION_CONTROL, targetPosition = self.amplitude*np.sin(self.frequency*np.linspcae(0, c.sim_length, c.sim_length) + self.offset)[cur_step], maxForce = 30)
+        controlMode = p.POSITION_CONTROL, targetPosition = self.amplitude*np.sin(self.frequency*np.linspace(0, c.sim_length, c.sim_length) + self.offset)[cur_step], maxForce = 30)

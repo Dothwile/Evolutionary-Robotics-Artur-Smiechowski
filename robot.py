@@ -28,8 +28,8 @@ class ROBOT:
             
     def Sense(self, t):
         for sensor in self.sensors:
-            self.sensors.get(sensor).GetValue(t)
+            self.sensors.get(sensor).Get_Value(t)
     
     def Act(self, t):
         for motor in self.motors:
-            self.motors.get(motor).Set_Value(self.robotId, )
+            self.motors.get(motor).Set_Value(self.robotId, t)

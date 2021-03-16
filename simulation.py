@@ -29,12 +29,13 @@ class SIMULATION:
             #Loop step times
             p.stepSimulation()
             
-            self.robot.sense(step)
+            self.robot.Sense(step)
             self.robot.Act(step)
 
             time.sleep(1/60)
-        
-        self.robot.Sense()
+            
+            self.robot.SaveSensorValues()
+            self.robot.SaveMotorValues()
             
     def __del__(self):
         p.disconnect()
