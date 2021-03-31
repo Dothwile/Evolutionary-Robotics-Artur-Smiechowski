@@ -11,9 +11,13 @@ from robot import ROBOT
 
 class SIMULATION:
 
-    def __init__(self):
+    def __init__(self, headMode):
                 
-        self.physicsClient = p.connect(p.GUI) #Create Physics Client
+        if headMode == "DIRECT":
+            self.physicsClient = p.connect(p.DIRECT) #Create Physics Client
+        else:
+            self.physicsClient = p.connect(p.GUI) #Create Physics Client
+        
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
         #Set World Parameters
@@ -41,5 +45,8 @@ class SIMULATION:
             
     def __del__(self):
         p.disconnect()
+        
+    def Get_Fitness(self):
+        return self.robot.Get_Fitness()
 
         

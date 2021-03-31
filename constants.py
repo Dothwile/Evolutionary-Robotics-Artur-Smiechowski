@@ -14,3 +14,5 @@ b_freq = 1/25
 b_phase = np.pi/4
 
 max_force = 500
+
+numberOfGenerations = 10

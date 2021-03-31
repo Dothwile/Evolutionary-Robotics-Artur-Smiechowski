@@ -43,4 +43,14 @@ class ROBOT:
                 
     def Think(self):
         self.nn.Update()
-        self.nn.Print()
+        #self.nn.Print() # Prints out Motor and Sensor Neuron Values Each Simulation Step
+        
+    def Get_Fitness(self):
+        positionOfLinkZero = p.getLinkState(self.robot,0)[0]
+        xCoordinateOfLinkZero = positionOfLinkZero[0]
+        
+        f = open("fitness.txt", "w")
+        f.write(str(xCoordinateOfLinkZero))
+        f.close()
+
+        return p.getLinkState(self.robot,0)

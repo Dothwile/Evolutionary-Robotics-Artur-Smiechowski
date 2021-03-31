@@ -9,6 +9,16 @@ import numpy as np
 import random
 import constants as c
 from simulation import SIMULATION
+import sys
 
-simulation = SIMULATION()
+directOrGUI = sys.argv[1]
+
+simulation = SIMULATION(directOrGUI)
 simulation.Run()
+
+stateOfLinkZero = simulation.Get_Fitness()
+
+'''
+print("State of link 0 "+str(stateOfLinkZero))
+exit()
+'''
