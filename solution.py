@@ -46,8 +46,6 @@ class SOLUTION:
         f.close()
         os.system("del fitness" + str(self.myID) + ".txt")
         
-        print(self.fitness)
-        
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
         pyrosim.Send_Cube(name="Box", pos=[-5,5,0.5] , size=[1,1,1])

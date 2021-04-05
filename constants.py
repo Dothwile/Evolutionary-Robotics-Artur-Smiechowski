@@ -15,5 +15,5 @@ b_phase = np.pi/4
 
 max_force = 500
 
-numberOfGenerations = 10
-populationSize = 10
+numberOfGenerations = 3
+populationSize = 2
