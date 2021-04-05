@@ -14,6 +14,7 @@ class SOLUTION:
         self.weights = np.random.rand(3,2)*2-1
         
     def Evaluate(self, directOrGUI):
+        '''
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
@@ -26,6 +27,8 @@ class SOLUTION:
         self.fitness = float(f.read())
         print(self.fitness)
         f.close()
+        '''
+        pass
         
     def Start_Simulation(self, directOrGUI):
         self.Create_World()
@@ -42,6 +45,8 @@ class SOLUTION:
         print(self.fitness)
         f.close()
         os.system("del fitness" + str(self.myID) + ".txt")
+        
+        print(self.fitness)
         
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")

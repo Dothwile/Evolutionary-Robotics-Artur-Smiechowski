@@ -17,11 +17,10 @@ class ROBOT:
         pyrosim.Prepare_To_Simulate("body.urdf")
         
         self.nn = NEURAL_NETWORK("brain" + str(self.solutionID) + ".nndf")
+        os.system("del brain" + str(solutionID) + ".nndf")
         
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
-        
-        os.system("del brain" + str(solutionID) + ".nndf")
         
     def Prepare_To_Sense(self):
         self.sensors = {}
