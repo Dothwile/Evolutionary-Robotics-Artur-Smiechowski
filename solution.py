@@ -8,7 +8,8 @@ import os
 
 class SOLUTION:
     
-    def __init__(self):
+    def __init__(self, myID):
+        self.myID = myID
         self.weights = np.random.rand(3,2)*2-1
         
     def Evaluate(self, headMode):
@@ -16,7 +17,7 @@ class SOLUTION:
         self.Create_Body()
         self.Create_Brain()
         
-        os.system("python simulate.py " + str(headMode))
+        os.system("start /B python simulate.py " + str(headMode))
         
         f = open("fitness.txt")
         self.fitness = float(f.read())
@@ -37,7 +38,8 @@ class SOLUTION:
         pyrosim.End()
         
     def Create_Brain(self):
-        pyrosim.Start_NeuralNetwork("brain.nndf")
+        pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
+        #pyrosim.Start_NeuralNetwork("brain.nndf")
         
         # Neurons
         
@@ -56,3 +58,6 @@ class SOLUTION:
         
     def Mutate(self):
         self.weights[random.randint(0,2),random.randint(0,1)] = random.random()*2-1
+        
+    def Set_ID(self, ID):
+        self.myID = ID

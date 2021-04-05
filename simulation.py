@@ -11,9 +11,10 @@ from robot import ROBOT
 
 class SIMULATION:
 
-    def __init__(self, headMode):
+    def __init__(self, directOrGUI, solutionID):
+        self.directOrGUI = directOrGUI
                 
-        if headMode == "DIRECT":
+        if directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT) #Create Physics Client
         else:
             self.physicsClient = p.connect(p.GUI) #Create Physics Client
@@ -26,7 +27,7 @@ class SIMULATION:
         # Create a World object
         self.world = WORLD()
         # Create a Robot object
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
         
     def Run(self):
         for step in range(c.sim_length):
@@ -37,7 +38,8 @@ class SIMULATION:
             self.robot.Think()
             self.robot.Act(step)
 
-            time.sleep(1/60)
+            if self.directOrGUI == "GUI":
+                time.sleep(1/60)
             '''
             self.robot.SaveSensorValues()
             self.robot.SaveMotorValues()

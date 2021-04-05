@@ -9,12 +9,12 @@ from pyrosim.neuralNetwork import NEURAL_NETWORK
 
 class ROBOT:
     
-    def __init__(self):
+    def __init__(self, solutionID):
         
         self.robot = p.loadURDF("body.urdf")
         pyrosim.Prepare_To_Simulate("body.urdf")
         
-        self.nn = NEURAL_NETWORK("brain.nndf")
+        self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
         
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
