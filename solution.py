@@ -6,6 +6,7 @@ import pyrosim.pyrosim as pyrosim
 import random
 import os
 import time
+import constants as c
 
 class SOLUTION:
     
@@ -73,14 +74,16 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_FrontLeg")
         
         # Synapses
-        for currentRow in range(0,3):
-            for currentColumn in range(0,2):
-                pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn+3, weight = self.weights[currentRow][currentColumn])
+        for currentRow in range(c.numSensorNeurons):
+            for currentColumn in range(c.numMotorNeurons):
+                pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn+c.numSensorNeurons, weight = self.weights[currentRow][currentColumn])
         
         pyrosim.End()
         
+        exit()
+        
     def Mutate(self):
-        self.weights[random.randint(0,2),random.randint(0,1)] = random.random()*2-1
+        self.weights[random.randint(c.numMotorNeurons),random.randint(0,1)] = random.random()*2-1
         
     def Set_ID(self, ID):
         self.myID = ID
