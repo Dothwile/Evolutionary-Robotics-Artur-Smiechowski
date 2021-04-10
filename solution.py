@@ -80,8 +80,6 @@ class SOLUTION:
         
         pyrosim.End()
         
-        exit()
-        
     def Mutate(self):
         self.weights[random.randint(c.numMotorNeurons),random.randint(0,1)] = random.random()*2-1
         
