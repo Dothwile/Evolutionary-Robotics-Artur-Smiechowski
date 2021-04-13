@@ -15,8 +15,8 @@ b_phase = np.pi/4
 
 max_force = 500
 
-numSensorNeurons = 3
-numMotorNeurons = 2
+numSensorNeurons = 5
+numMotorNeurons = 4
 
 numberOfGenerations = 1
 populationSize = 1
