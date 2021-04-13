@@ -14,9 +14,10 @@ b_freq = 1/25
 b_phase = np.pi/4
 
 max_force = 500
+motorJointRange = 0.2
 
 numSensorNeurons = 9
 numMotorNeurons = 8
 
-numberOfGenerations = 1
-populationSize = 1
+numberOfGenerations = 50
+populationSize = 5

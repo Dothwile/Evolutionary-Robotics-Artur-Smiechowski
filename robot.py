@@ -3,6 +3,7 @@
 
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
+import constants as c
 from sensor import SENSOR
 from motor import MOTOR
 from pyrosim.neuralNetwork import NEURAL_NETWORK
@@ -14,6 +15,7 @@ class ROBOT:
         
         self.solutionID = solutionID
         self.robot = p.loadURDF("body.urdf")
+                
         pyrosim.Prepare_To_Simulate("body.urdf")
         
         self.nn = NEURAL_NETWORK("brain" + str(self.solutionID) + ".nndf")
@@ -40,7 +42,7 @@ class ROBOT:
          for neuron in self.nn.Get_Neuron_Names():
             if self.nn.Is_Motor_Neuron(neuron):
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuron)
-                desiredAngle = self.nn.Get_Value_Of(neuron)
+                desiredAngle = self.nn.Get_Value_Of(neuron)*c.motorJointRange
                 self.motors.get(jointName).Set_Value(self.robot, desiredAngle)
                 
                 
