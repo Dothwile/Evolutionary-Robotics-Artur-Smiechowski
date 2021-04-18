@@ -14,9 +14,9 @@ class ROBOT:
     def __init__(self, solutionID):
         
         self.solutionID = solutionID
-        self.robot = p.loadURDF("body.urdf")
+        self.robot = p.loadURDF("body" + str(solutionID) + ".urdf")
                 
-        pyrosim.Prepare_To_Simulate("body.urdf")
+        pyrosim.Prepare_To_Simulate("body" + str(solutionID) + ".urdf")
         
         self.nn = NEURAL_NETWORK("brain" + str(self.solutionID) + ".nndf")
         os.system("del brain" + str(solutionID) + ".nndf")
@@ -51,11 +51,14 @@ class ROBOT:
         #self.nn.Print() # Prints out Motor and Sensor Neuron Values Each Simulation Step
         
     def Get_Fitness(self):
-        positionOfLinkZero = p.getLinkState(self.robot,0)[0]
-        xCoordinateOfLinkZero = positionOfLinkZero[0]
+        #positionOfLinkZero = p.getLinkState(self.robot,0)[0]
+        basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
+        #xCoordinateOfLinkZero = positionOfLinkZero[0]
+        basePosition = basePositionAndOrientation[0]
+        xPosition = basePosition[0]
         
         f = open("tmp" + str(self.solutionID) + ".txt", "w")
-        f.write(str(xCoordinateOfLinkZero))
+        f.write(str(xPosition))
         f.close()
         os.rename("tmp" + str(self.solutionID) + ".txt ", "fitness" + str(self.solutionID) + ".txt")
 

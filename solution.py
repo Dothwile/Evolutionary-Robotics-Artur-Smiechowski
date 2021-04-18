@@ -48,12 +48,12 @@ class SOLUTION:
         os.system("del fitness" + str(self.myID) + ".txt")
         
     def Create_World(self):
-        pyrosim.Start_SDF("world.sdf")
-        pyrosim.Send_Cube(name="Box", pos=[-5,5,0.5] , size=[1,1,1])
+        pyrosim.Start_SDF("world" + str(self.myID) + ".sdf")
+        #pyrosim.Send_Cube(name="Box", pos=[-5,5,0.5] , size=[1,1,1])
         pyrosim.End()
     
     def Create_Body(self):
-        pyrosim.Start_URDF("body.urdf")
+        pyrosim.Start_URDF("body" + str(self.myID) + ".urdf")
         pyrosim.Send_Cube(name="Torso", pos=[0.0,0,1.0] , size=[1,1,1])
         pyrosim.Send_Joint( name = "Torso_FrontLeg" , parent= "Torso" , child = "FrontLeg" , type = "revolute", position = "0 0.5 1", jointAxis = "1 0 0")
         pyrosim.Send_Cube(name="FrontLeg", pos=[0,0.5,0] , size=[0.2,1,0.2])
