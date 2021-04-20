@@ -25,7 +25,7 @@ class SIMULATION:
         p.setGravity(0,0,c.g)
 
         # Create a World object
-        self.world = WORLD(solutionID)
+        self.world = WORLD()
         # Create a Robot object
         self.robot = ROBOT(solutionID)
         
