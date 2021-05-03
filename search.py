@@ -7,6 +7,11 @@ phc = PARALLEL_HILL_CLIMBER()
 phc.Evolve()
 phc.Show_Best()
 
+highestFitness = phc.parents[0]
+for parent in phc.parents:
+    if phc.parents[parent].fitness > highestFitness.fitness:
+        highestFitness = phc.parents[parent]
+
 '''
 for sim_count in range(5):
     os.system("python generate.py")

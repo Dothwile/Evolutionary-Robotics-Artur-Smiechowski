@@ -4,6 +4,7 @@
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
 import constants as c
+import numpy as np
 from sensor import SENSOR
 from motor import MOTOR
 from pyrosim.neuralNetwork import NEURAL_NETWORK
@@ -55,10 +56,34 @@ class ROBOT:
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
         #xCoordinateOfLinkZero = positionOfLinkZero[0]
         basePosition = basePositionAndOrientation[0]
-        xPosition = basePosition[0]
+        zPosition = basePosition[2]
+        
+        # longestJump = 0
+        # currentRun = 0
+        # for step in range(c.sim_length):
+        #     if(not (self.sensors["LowerBackLeg"].values[step]+1 and self.sensors["LowerFrontLeg"].values[step]+1 and self.sensors["LowerLeftLeg"].values[step]+1 and self.sensors["LowerRightLeg"].values[step]+1)):
+        #         currentRun += 1
+        #     else:
+        #         currentRun = 0
+                
+        #     if(currentRun > longestJump):
+        #         longestJump = currentRun
+        
+        longestJump = 0
+        currentJump = 0
+        for step in range(c.sim_length):
+            if((self.sensors["LowerBackLeg"].values[step] == -1) and (self.sensors["LowerFrontLeg"].values[step] == -1) and (self.sensors["LowerLeftLeg"].values[step] == -1) and (self.sensors["LowerRightLeg"].values[step] == -1)):
+                currentJump += 1
+            else:
+                currentJump = 0
+            
+            if(currentJump > longestJump):
+                longestJump = currentJump
+        
+        fitness = longestJump
         
         f = open("tmp" + str(self.solutionID) + ".txt", "w")
-        f.write(str(xPosition))
+        f.write(str(fitness))
         f.close()
         os.rename("tmp" + str(self.solutionID) + ".txt ", "fitness" + str(self.solutionID) + ".txt")
 
