@@ -69,6 +69,11 @@ class ROBOT:
         #     if(currentRun > longestJump):
         #         longestJump = currentRun
         
+        self.sensors["LowerBackLeg"].Save_Sensor_Values()
+        self.sensors["LowerFrontLeg"].Save_Sensor_Values()
+        self.sensors["LowerLeftLeg"].Save_Sensor_Values()
+        self.sensors["LowerRightLeg"].Save_Sensor_Values()
+        
         longestJump = 0
         currentJump = 0
         for step in range(c.sim_length):
